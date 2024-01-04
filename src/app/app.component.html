@@ -1,0 +1,49 @@
+<div>
+    <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif;">Welcome to FunDesign</h1>
+    <form #SignUpForm="ngForm" class="container" style="width: 300px; margin: auto;"  >
+        
+        <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif;">SignUp</h1>
+
+        <div class="form-floating" style="margin: 10px;">
+        <input type="text" class="form-control" placeholder="Name" name="uname" required pattern="[a-zA-Z]{3,30}" #name="ngModel" [(ngModel)]="SignUp.name">
+        <label style="color: green;">Name</label>
+        <span *ngIf="name.invalid&&(name.touched||name.dirty)">
+        <span *ngIf="name.errors?.['required']" style="color: red;">Name required</span>
+        <span *ngIf="name.errors?.['pattern']" style="color: red;">Invalid name</span>
+       
+        </span>
+        </div>
+
+        <div class="form-floating" style="margin: 10px;">
+        <input type="tel" class="form-control"  placeholder="9876543210" name="mob" required pattern="[0-9]{10}" #mobile="ngModel" [(ngModel)]="SignUp.mobile">
+        <label style="color: green;">Mobile</label>
+        <span *ngIf="mobile.invalid&&(mobile.touched||mobile.dirty)">
+            <span *ngIf="mobile.errors?.['required']" style="color: red;">Mobile number required</span>
+            <span *ngIf="mobile.errors?.['pattern']" style="color: red;">Invalid mobile number</span>
+            </span>
+        </div>
+
+        <div class="form-floating" style="margin: 10px;">
+        <input type="email" class="form-control" placeholder="Email" name="email" required email #email="ngModel" [(ngModel)]="SignUp.email">
+        <label style="color: green;">Email</label>
+        <span *ngIf="email.invalid&&(email.touched||email.dirty)">
+            <span *ngIf="email.errors?.['required']" style="color: red;">Email required</span>
+            <span *ngIf="email.errors?.['email']" style="color: red;">Invalid EmailId</span>
+            </span>
+        </div>
+        
+        <div class="form-floating" style="margin: 10px;">
+        <input type="text" class="form-control" placeholder="Password" name="password" required #password="ngModel" [(ngModel)]="SignUp.password">
+        <label style="color: green;">Password</label>
+        <span *ngIf="password.invalid&&(password.touched||password.dirty)">
+            <span *ngIf="password.errors?.['required']" style="color: red;">password required</span> 
+        </span>
+        </div>
+        <div>
+             <button class="btn btn-outline-success" routerLink="" style="margin-bottom: 10px;" [disabled]="SignUpForm.invalid">SignUp</button>
+        </div>
+        <div>If u already have an account? <a routerLink="/LogIn" style="text-decoration: none;">LogIn</a>
+        </div>
+        </form>
+</div>
+
